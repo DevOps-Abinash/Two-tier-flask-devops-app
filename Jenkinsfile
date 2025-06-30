@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage("Code"){
             steps{
-                git url: "https://github.com/Ankit907/Ankit-devops-project.git", branch: "jenkins"
+                git url: "https://github.com/DevOps-Abinash/Two-tier-flask-devops-app.git", branch: "jenkins"
             }
         }
         stage("Build & Test"){
