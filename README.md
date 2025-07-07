@@ -90,6 +90,35 @@ volumes:
 sudo docker-compose up -d
 sudo docker ps
 ```
+
+🔐 Configure Security Groups
+✅ On the AWS EC2 console, open the security group attached to your instance.
+✅ Add a Custom TCP Rule to allow port 5000 from 0.0.0.0/0 or a specific IP.
+
+🗄️ Check the MySQL Database
+1️⃣ Access the MySQL container:
+
+```bash
+sudo docker ps
+```
+Find the container ID for MySQL (for example, d2ad3c1c1c05), then:
+
+```bash
+sudo docker exec -it d2ad3c1c1c05 bash
+```
+2️⃣ Log in to MySQL:
+
+```bash
+mysql -u admin -p
+# password: admin
+```
+3️⃣ Run SQL commands:
+```bash
+show databases;
+use myDb;
+select * from messages;
+```
+
 ✅ Outcome
 
 Successfully deployed a two-tier web application with persistent MySQL storage
