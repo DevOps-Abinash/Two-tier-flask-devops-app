@@ -1,59 +1,60 @@
-🚀 Two-Tier Flask Application with Docker-Compose on AWS EC2
+## 🚀 Two-Tier Flask Application with Docker Compose on AWS EC2
 
-🔹 Project Overview:
-I built and deployed a two-tier Flask application with a MySQL backend using Docker and Docker Compose on an AWS EC2 instance. This project demonstrates containerized application deployment, infrastructure-as-code practices, and integration of a relational database with a Python-based web application.
+[![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)](https://www.docker.com/)
+[![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/DevOps-Abinash/Two-tier-flask-devops-app)](https://github.com/DevOps-Abinash/Two-tier-flask-devops-app/commits/main)
+[![AWS EC2](https://img.shields.io/badge/AWS-EC2-orange?logo=amazon-aws)](https://aws.amazon.com/ec2/)
 
-🔧 Tech Stack:
+---
 
+## 📌 Project Overview
 
-Flask (Python microframework)
+This project demonstrates how to deploy a two-tier Flask application with a MySQL backend using Docker and Docker Compose on an AWS EC2 instance. It showcases containerized application deployment, infrastructure-as-code practices, and a clean separation between the web and database tiers.
 
-MySQL 5.7
+---
 
-Docker & Docker Compose
+## 🛠️ Tech Stack
 
-AWS EC2 (Ubuntu instance)
+- **Flask (Python microframework)**
+- **MySQL 5.7**
+- **Docker & Docker Compose**
+- **AWS EC2 (Ubuntu)**
 
+---
 
+## ⚙️ Deployment Steps
 
-⚙️ Deployment Steps (highlights):
+### 1️⃣ Launch an EC2 Instance
 
-✅ Provision an EC2 instance (Ubuntu 22.04)
+- Launch an Ubuntu-based EC2 instance.
+- Open port **5000** (custom TCP) in the security group to allow inbound traffic for the Flask app.
 
-✅ Install dependencies
+---
 
+### 2️⃣ Install Dependencies
+
+```bash
 sudo apt-get update
-
 sudo apt-get install docker.io -y
-
 sudo curl -L "https://github.com/docker/compose/releases/download/2.38.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
 sudo chmod +x /usr/local/bin/docker-compose
-
 docker-compose -v
-
-
-
-✅ Clone the project
-
+```
+3️⃣ Clone the Repository
+```bash
 git clone https://github.com/DevOps-Abinash/Two-tier-flask-devops-app.git
-
 cd Two-tier-flask-devops-app
-
-
-
-✅ Build the Flask Docker image
-
+```
+4️⃣ Build the Flask Docker Image
+```bash
 sudo docker build -t flaskapp .
-
 sudo docker images
+```
+5️⃣ Create docker-compose.yml
+Replace (or create) the docker-compose.yml file with the following contents:
 
-
-
-✅ Configure docker-compose.yml:
-
-vim docker-compose.yml
-
+```bash
 version: '3.3'
 services:
   backend:
@@ -83,30 +84,29 @@ services:
 
 volumes:
   mysql-data:
-  
-✅ Start the stack
-
+```
+6️⃣ Start the Application
+```bash
 sudo docker-compose up -d
-
 sudo docker ps
+```
+✅ Outcome
+
+Successfully deployed a two-tier web application with persistent MySQL storage
+
+Automated the deployment with Docker Compose
+
+Demonstrated infrastructure-as-code practices
+
+Version-controlled and reusable for future deployments
+
+🔗 Project Repository
+```bash
+https://github.com/DevOps-Abinash/Two-tier-flask-devops-app
+```
 
 
 
-✅ Update Security Groups
-
-Allow inbound TCP traffic on port 5000 to access the Flask app externally.
 
 
-🌟 Outcome:
-
-✅ Successfully deployed a two-tier web application with persistent MySQL storage
-
-✅ Demonstrated container orchestration via Docker Compose
-
-✅ Automated multi-container application deployment on AWS infrastructure
-
-✅ Version-controlled the project on GitHub
-
-
-🔗 GitHub Repo: https://github.com/DevOps-Abinash/Two-tier-flask-devops-app
 
